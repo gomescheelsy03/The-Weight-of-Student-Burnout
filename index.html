@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Weight of Student Burnout</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Inter:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" type="image/png" href="./photo/a1open_eye.png" />
+  </head>
+
+  <body>
+
+    <main class="story-page">
+      <!-- HERO SECTION -->
+      <section class="hero" id="top">
+        <div class="hero-text">
+          <p class="small-label">Interactive Data Story</p>
+
+          <h1>
+            The Weight of
+            <span>StudentBurnout</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            A soft data story about how sleep, stress, and social support shape
+            student burnout and risk.
+          </p>
+
+          <p class="scroll-cue">Scroll down to begin</p>
+        </div>
+
+        <div class="hero-visual">
+          <img
+            class="student-img student-open"
+            src="./photo/a1open_eye.png"
+            alt="Student with open eyes"
+          />
+
+          <img
+            class="student-img student-closed"
+            src="./photo/a1close_eye.png"
+            alt="Student with closed eyes"
+          />
+        </div>
+      </section>
+
+      <!-- INTRODUCTION -->
+      <section class="chapter" id="intro">
+        <div class="chapter-card">
+          <p class="chapter-label">Introduction</p>
+
+          <h2 class="chapter-title">Burnout is not just being tired.</h2>
+
+          <p class="chapter-text">
+            Student burnout can build from many small things. In this project,
+            we look at sleep, stress, and social support to understand how
+            student risk changes.
+          </p>
+        </div>
+      </section>
+
+      <!-- VISUAL 1 -->
+      <section class="chapter" id="sleep">
+        <div class="chapter-card">
+          <p class="chapter-label">Visual 1</p>
+
+          <div class="visual-block">
+            
+            <div class="visual-frame">
+                <div class="flourish-embed flourish-chart" data-src="visualisation/28762800">
+                    <script src="https://public.flourish.studio/resources/embed.js"></script>
+                    <noscript>
+                        <img
+                        src="https://public.flourish.studio/visualisation/28762800/thumbnail"
+                        width="100%"
+                        alt="Less Sleep, More Burnout chart visualization"
+                        />
+                     </noscript>
+                    </div>
+                </div>
+            </div>
+
+      </section>
+
+      <!-- VISUAL 2 -->
+      <section class="chapter" id="stress">
+        <div class="chapter-card">
+          <p class="chapter-label">Visual 2</p>
+
+          <div class="visual-block">
+            <div class="visual-frame">
+                <div class="flourish-embed flourish-scatter" data-src="visualisation/28765353">
+                    <script src="https://public.flourish.studio/resources/embed.js"></script>
+                    <noscript>
+                        <img 
+                        src="https://public.flourish.studio/visualisation/28765353/thumbnail" 
+                        width="100%" 
+                        alt="scatter visualization" 
+                        />
+                    </noscript>
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VISUAL 3 -->
+      <section class="chapter" id="support">
+        <div class="chapter-card">
+          <p class="chapter-label">Visual 3</p>
+
+          <div class="visual-block">
+            <div class="visual-frame">
+              <div class="flourish-embed flourish-chart" data-src="visualisation/28765739">
+                <script src="https://public.flourish.studio/resources/embed.js"></script>
+                <noscript>
+                    <img src="https://public.flourish.studio/visualisation/28765739/thumbnail" 
+                    width="100%" 
+                    alt="chart visualization" 
+                    />
+                </noscript>
+            </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VISUAL 4 -->
+       <section class="chapter" id="journey">
+        <div class="chapter-card">
+            <p class="chapter-label">Visual 4</p>
+
+            <h2 class="chapter-title">The Burnout Journey</h2>
+            <p class="chapter-text">
+                Click a factor to see how small daily pressures can build into higher burnout risk.
+            </p>
+            
+            <div class="journey-visual">
+                <div class="journey-buttons">
+                    <button class="journey-btn active" data-path="sleep">Low Sleep</button>
+                    <button class="journey-btn" data-path="stress">High Stress</button>
+                    <button class="journey-btn" data-path="support">Low Support</button>
+                </div>
+                <div class="journey-stage">
+                    <div class="journey-step active">
+                        <div class="journey-icon-wrap">
+                            <img id="icon-one" src="./photo/sleep.png" alt="Sleep icon" />
+                        </div>
+                        <p id="label-one">Low Sleep</p>
+                    </div>
+                     <div class="journey-arrow">→</div>
+                     <div class="journey-step active">
+                        <div class="journey-icon-wrap">
+                            <img id="icon-two" src="./photo/stress.png" alt="Pressure icon" />
+                        </div>
+                        <p id="label-two">Pressure Builds</p>
+                    </div>
+                    
+                    <div class="journey-arrow">→</div>
+                    <div class="journey-step active">
+                        <div class="journey-icon-wrap">
+                            <img id="icon-three" src="./photo/burnout.png" alt="Burnout icon" />
+                        </div>
+                        <p id="label-three">Burnout Rises</p>
+                     </div>
+
+
+                     <div class="journey-arrow">→</div>
+                     <div class="journey-step active">
+                        <div class="journey-icon-wrap">
+                            <img id="icon-four" src="./photo/risk.png" alt="Risk icon" />
+                        </div>
+                        <p id="label-four">Higher Risk</p>
+                    </div>
+                </div>
+                
+                <div class="journey-data-card">
+                    <p class="journey-data-label">Current Path</p>
+                    <h3 id="journey-title">Low Sleep Path</h3>
+                    <p id="journey-text">
+                        Students sleeping less than 5 hours had an average burnout score of 2.81.
+                        Students sleeping more than 8 hours had an average burnout score of 0.92.
+                    </p>
+                    <p id="journey-number">2.81 average burnout</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+      <!-- VISUAL 5 -->
+      <section class="chapter" id="comparison">
+        <div class="chapter-card">
+          <p class="chapter-label">Visual 5</p>
+
+          <h2 class="chapter-title">Two Student Paths</h2>
+
+          <p class="chapter-text">
+            This final section will compare two student experiences and show
+            how different daily patterns can lead to different outcomes.
+          </p>
+
+          <div class="visual-block">
+            <div class="visual-frame">
+              <!-- Final comparison visual will go here later -->
+              <p class="note-text">Two student comparison will go here.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL TAKEAWAY -->
+      <section class="chapter" id="takeaway">
+        <div class="chapter-card">
+          <p class="chapter-label">Final Takeaway</p>
+
+          <h2 class="chapter-title">Burnout is a pattern, not one moment.</h2>
+
+          <p class="chapter-text">
+            The data suggests that sleep, stress, and social support work
+            together to shape student burnout and risk. Burnout does not appear
+            from nowhere. It builds through daily pressure.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
