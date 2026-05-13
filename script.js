@@ -133,3 +133,162 @@ journeyButtons.forEach((button) => {
     updateJourney(button.dataset.path);
   });
 });
+
+/* ========================================
+   VISUAL 5: TWO STUDENT OUTCOME GAME
+======================================== */
+
+const studentGameData = {
+  sleep: {
+    lt5: { label: "<5 hrs", score: 2.81 },
+    "5to6": { label: "5–6 hrs", score: 2.17 },
+    "6to7": { label: "6–7 hrs", score: 1.74 },
+    "7to8": { label: "7–8 hrs", score: 1.35 },
+    gt8: { label: ">8 hrs", score: 0.92 },
+  },
+
+  stress: {
+    low: { label: "Low Stress", score: 0.42 },
+    medium: { label: "Medium Stress", score: 2.08 },
+    high: { label: "High Stress", score: 4.57 },
+  },
+
+  support: {
+    low: { label: "Low Support", protection: 0, lowRisk: 64.1 },
+    medium: { label: "Medium Support", protection: 0.35, lowRisk: 75.6 },
+    high: { label: "High Support", protection: 0.7, lowRisk: 84.7 },
+  },
+};
+
+const studentChoices = {
+  a: {
+    sleep: "gt8",
+    stress: "low",
+    support: "high",
+  },
+
+  b: {
+    sleep: "lt5",
+    stress: "high",
+    support: "low",
+  },
+};
+
+function getStudentResult(studentId) {
+  const choices = studentChoices[studentId];
+
+  const sleepScore = studentGameData.sleep[choices.sleep].score;
+  const stressScore = studentGameData.stress[choices.stress].score;
+  const supportProtection = studentGameData.support[choices.support].protection;
+
+  let burnoutScore = (sleepScore + stressScore) / 2;
+
+  // Support acts like protection, so stronger support softens the final score.
+  burnoutScore = Math.max(0, burnoutScore - supportProtection);
+
+  let level = "low";
+  let riskText = "Lower Risk";
+
+  if (burnoutScore >= 1.75 && burnoutScore < 3) {
+    level = "medium";
+    riskText = "Moderate Risk";
+  }
+
+  if (burnoutScore >= 3) {
+    level = "high";
+    riskText = "Higher Risk";
+  }
+
+  return {
+    score: burnoutScore,
+    level: level,
+    riskText: riskText,
+  };
+}
+
+function updateStudentCard(studentId) {
+  const result = getStudentResult(studentId);
+
+  const card = document.getElementById(`student-${studentId}-card`);
+  const img = document.getElementById(`student-${studentId}-img`);
+  const meter = document.getElementById(`student-${studentId}-meter`);
+  const score = document.getElementById(`student-${studentId}-score`);
+  const risk = document.getElementById(`student-${studentId}-risk`);
+
+  card.classList.remove("low-result", "medium-result", "high-result", "is-updating");
+  risk.classList.remove("low", "medium", "high");
+
+  void card.offsetWidth;
+
+  card.classList.add(`${result.level}-result`, "is-updating");
+  risk.classList.add(result.level);
+
+  img.src = `./photo/student-${studentId}-${result.level}.png`;
+  
+  const meterPercent = Math.min((result.score / 4.6) * 100, 100);
+  const roundedPercent = Math.round(meterPercent);
+  
+  meter.style.width = `${roundedPercent}%`;
+  
+  score.textContent = `${roundedPercent}%`;
+  risk.textContent = result.riskText;
+}
+
+function updateGameSummary() {
+  const resultA = getStudentResult("a");
+  const resultB = getStudentResult("b");
+
+  const winnerText = document.getElementById("game-winner-text");
+  const takeawayTitle = document.getElementById("game-takeaway-title");
+  const takeawayText = document.getElementById("game-takeaway-text");
+
+  const percentA = Math.round(Math.min((resultA.score / 4.6) * 100, 100));
+  const percentB = Math.round(Math.min((resultB.score / 4.6) * 100, 100));
+  const difference = Math.abs(percentA - percentB);
+
+  if (percentA < percentB) {
+    winnerText.textContent = "Student A is carrying less burnout pressure.";
+    takeawayTitle.textContent = "Student B is carrying the heavier burnout load.";
+    takeawayText.textContent =
+      `Student B's burnout load is ${difference}% higher than Student A's. This shows how sleep, stress, and support can combine into a heavier burnout pattern.`;
+  } else if (percentB < percentA) {
+    winnerText.textContent = "Student B is carrying less burnout pressure.";
+    takeawayTitle.textContent = "Student A is carrying the heavier burnout load.";
+    takeawayText.textContent =
+      `Student A's burnout load is ${difference}% higher than Student B's. This shows how sleep, stress, and support can combine into a heavier burnout pattern.`;
+  } else {
+    winnerText.textContent = "Both students are carrying about the same burnout pressure.";
+    takeawayTitle.textContent = "Both students show a similar burnout load.";
+    takeawayText.textContent =
+      "Changing sleep, stress, and support can shift the outcome. This game shows that burnout is shaped by the full pattern, not one choice alone.";
+  }
+}
+
+function updateWholeGame() {
+  updateStudentCard("a");
+  updateStudentCard("b");
+  updateGameSummary();
+}
+
+document.querySelectorAll(".choice-row").forEach((row) => {
+  const studentId = row.dataset.student;
+  const choiceType = row.dataset.type;
+
+  row.querySelectorAll(".choice-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+      row.querySelectorAll(".choice-btn").forEach((btn) => {
+        btn.classList.remove("active");
+      });
+
+      button.classList.add("active");
+
+      studentChoices[studentId][choiceType] = button.dataset.value;
+
+      updateWholeGame();
+    });
+  });
+});
+
+
+
+updateWholeGame();

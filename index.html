@@ -198,26 +198,146 @@
 
 
 
-      <!-- VISUAL 5 -->
-      <section class="chapter" id="comparison">
-        <div class="chapter-card">
-          <p class="chapter-label">Visual 5</p>
+ <!-- VISUAL 5 -->
+<section class="chapter" id="comparison">
+  <div class="chapter-card game-card">
+    <p class="chapter-label">Visual 5</p>
 
-          <h2 class="chapter-title">Two Student Paths</h2>
+    <h2 class="chapter-title">Build Two Student Outcomes</h2>
 
-          <p class="chapter-text">
-            This final section will compare two student experiences and show
-            how different daily patterns can lead to different outcomes.
-          </p>
+    <p class="chapter-text">
+      Change each student's sleep, stress, and support. Watch how their burnout outcome shifts.
+    </p>
 
-          <div class="visual-block">
-            <div class="visual-frame">
-              <!-- Final comparison visual will go here later -->
-              <p class="note-text">Two student comparison will go here.</p>
-            </div>
+    <div class="game-stage">
+      <!-- STUDENT A -->
+      <div class="student-game-card" id="student-a-card">
+        <p class="game-student-label">Student A</p>
+
+        <div class="student-character-wrap">
+          <img
+            id="student-a-img"
+            class="game-student-img"
+            src="./photo/student-a-low.png"
+            alt="Student A"
+          />
+        </div>
+
+        <div class="choice-group">
+          <p>Sleep</p>
+          <div class="choice-row" data-student="a" data-type="sleep">
+            <button class="choice-btn" data-value="lt5">&lt;5 hrs</button>
+            <button class="choice-btn" data-value="5to6">5–6</button>
+            <button class="choice-btn" data-value="6to7">6–7</button>
+            <button class="choice-btn" data-value="7to8">7–8</button>
+            <button class="choice-btn active" data-value="gt8">&gt;8</button>
           </div>
         </div>
-      </section>
+
+        <div class="choice-group">
+          <p>Stress</p>
+          <div class="choice-row" data-student="a" data-type="stress">
+            <button class="choice-btn active" data-value="low">Low</button>
+            <button class="choice-btn" data-value="medium">Medium</button>
+            <button class="choice-btn" data-value="high">High</button>
+          </div>
+        </div>
+
+        <div class="choice-group">
+          <p>Support</p>
+          <div class="choice-row" data-student="a" data-type="support">
+            <button class="choice-btn" data-value="low">Low</button>
+            <button class="choice-btn" data-value="medium">Medium</button>
+            <button class="choice-btn active" data-value="high">High</button>
+          </div>
+        </div>
+
+        <div class="meter-wrap">
+          <div class="meter-label">
+            <span>Burnout Load</span>
+            <strong id="student-a-score">0.67</strong>
+          </div>
+          <div class="burnout-meter">
+            <div class="burnout-fill" id="student-a-meter"></div>
+          </div>
+          <p class="score-note">Higher percentage means higher burnout pressure.</p>
+        </div>
+
+        <div class="risk-badge low" id="student-a-risk">Lower Risk</div>
+      </div>
+
+      <!-- CENTER VS -->
+      <div class="vs-column">
+        <div class="vs-circle">VS</div>
+        <p id="game-winner-text">Student A is carrying less burnout pressure.</p>
+      </div>
+
+      <!-- STUDENT B -->
+      <div class="student-game-card" id="student-b-card">
+        <p class="game-student-label">Student B</p>
+
+        <div class="student-character-wrap">
+          <img
+            id="student-b-img"
+            class="game-student-img"
+            src="./photo/student-b-high.png"
+            alt="Student B"
+          />
+        </div>
+
+        <div class="choice-group">
+          <p>Sleep</p>
+          <div class="choice-row" data-student="b" data-type="sleep">
+            <button class="choice-btn active" data-value="lt5">&lt;5 hrs</button>
+            <button class="choice-btn" data-value="5to6">5–6</button>
+            <button class="choice-btn" data-value="6to7">6–7</button>
+            <button class="choice-btn" data-value="7to8">7–8</button>
+            <button class="choice-btn" data-value="gt8">&gt;8</button>
+          </div>
+        </div>
+
+        <div class="choice-group">
+          <p>Stress</p>
+          <div class="choice-row" data-student="b" data-type="stress">
+            <button class="choice-btn" data-value="low">Low</button>
+            <button class="choice-btn" data-value="medium">Medium</button>
+            <button class="choice-btn active" data-value="high">High</button>
+          </div>
+        </div>
+
+        <div class="choice-group">
+          <p>Support</p>
+          <div class="choice-row" data-student="b" data-type="support">
+            <button class="choice-btn active" data-value="low">Low</button>
+            <button class="choice-btn" data-value="medium">Medium</button>
+            <button class="choice-btn" data-value="high">High</button>
+          </div>
+        </div>
+
+        <div class="meter-wrap">
+          <div class="meter-label">
+            <span>Burnout</span>
+            <strong id="student-b-score">3.69</strong>
+          </div>
+          <div class="burnout-meter">
+            <div class="burnout-fill" id="student-b-meter"></div>
+          </div>
+          <p class="score-note">Higher percentage means higher burnout pressure.</p>
+        </div>
+
+        <div class="risk-badge high" id="student-b-risk">Higher Risk</div>
+      </div>
+    </div>
+
+    <div class="game-takeaway">
+      <p class="chapter-label">What changed?</p>
+      <h3 id="game-takeaway-title">Burnout changes when the pattern changes.</h3>
+      <p id="game-takeaway-text">
+        Student A starts with more sleep, lower stress, and stronger support. Student B starts with less sleep, higher stress, and lower support.
+      </p>
+    </div>
+  </div>
+</section>
 
       <!-- FINAL TAKEAWAY -->
       <section class="chapter" id="takeaway">

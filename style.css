@@ -708,3 +708,364 @@ body.is-scrolling-down .student-closed {
     padding: 22px;
   }
 }
+
+/* ========================================
+   14. VISUAL 5: TWO STUDENT GAME
+======================================== */
+
+.game-card {
+  overflow: hidden;
+}
+
+.game-stage {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: 1fr 150px 1fr;
+  align-items: stretch;
+  gap: 26px;
+}
+
+.student-game-card {
+  position: relative;
+  padding: 28px;
+  border-radius: 34px;
+  background: rgba(255, 250, 245, 0.72);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-card);
+  text-align: center;
+  overflow: hidden;
+  transition:
+    transform 450ms ease,
+    box-shadow 450ms ease,
+    background 450ms ease;
+}
+
+.student-game-card.is-updating {
+  animation: cardPulse 650ms ease;
+}
+
+@keyframes cardPulse {
+  0% {
+    transform: scale(1);
+  }
+
+  45% {
+    transform: scale(1.025);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.student-game-card.low-result {
+  box-shadow: 0 24px 70px rgba(59, 42, 32, 0.09);
+}
+
+.student-game-card.medium-result {
+  box-shadow: 0 28px 80px rgba(123, 88, 64, 0.16);
+}
+
+.student-game-card.high-result {
+  box-shadow: 0 34px 90px rgba(59, 42, 32, 0.24);
+}
+
+.game-student-label {
+  margin: 0 0 12px;
+  color: var(--text-accent);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.student-character-wrap {
+  height: 390px;
+  display: grid;
+  place-items: end center;
+  margin-bottom: 18px;
+}
+
+.game-student-img {
+  max-height: 380px;
+  max-width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 24px rgba(59, 42, 32, 0.15));
+  transition:
+    opacity 350ms ease,
+    transform 500ms ease,
+    filter 500ms ease;
+}
+
+.low-result .game-student-img {
+  transform: translateY(0) scale(1);
+}
+
+.medium-result .game-student-img {
+  transform: translateY(10px) scale(0.98);
+}
+
+.high-result .game-student-img {
+  transform: translateY(20px) scale(0.96);
+  animation: burnoutShake 1.3s ease-in-out infinite;
+  filter: drop-shadow(0 24px 30px rgba(59, 42, 32, 0.28));
+}
+
+@keyframes burnoutShake {
+  0%,
+  100% {
+    transform: translateY(20px) rotate(0deg) scale(0.96);
+  }
+
+  50% {
+    transform: translateY(23px) rotate(-1.2deg) scale(0.96);
+  }
+}
+
+.choice-group {
+  margin-top: 16px;
+  text-align: left;
+}
+
+.choice-group p {
+  margin: 0 0 8px;
+  color: var(--text-dark);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.choice-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.choice-btn {
+  border: 1px solid rgba(123, 88, 64, 0.22);
+  background: rgba(251, 246, 241, 0.85);
+  color: var(--text-dark);
+  padding: 9px 12px;
+  border-radius: 999px;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    background 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.choice-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+}
+
+.choice-btn.active {
+  background: var(--text-dark);
+  color: var(--bg-cream);
+}
+
+.meter-wrap {
+  margin-top: 22px;
+}
+
+.meter-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+  color: var(--text-dark);
+  font-weight: 800;
+}
+
+.meter-label span {
+  color: var(--text-light);
+}
+
+.burnout-meter {
+  height: 18px;
+  width: 100%;
+  border-radius: 999px;
+  background: rgba(123, 88, 64, 0.14);
+  overflow: hidden;
+  border: 1px solid rgba(123, 88, 64, 0.16);
+}
+
+.burnout-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #b88167, #7b5840, #3b2a20);
+  transition: width 900ms ease;
+}
+
+.risk-badge {
+  margin: 16px auto 0;
+  width: fit-content;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  transition:
+    transform 300ms ease,
+    background 300ms ease,
+    color 300ms ease;
+}
+
+.risk-badge.low {
+  background: rgba(184, 129, 103, 0.16);
+  color: var(--text-brown);
+}
+
+.risk-badge.medium {
+  background: rgba(123, 88, 64, 0.18);
+  color: var(--text-dark);
+}
+
+.risk-badge.high {
+  background: var(--text-dark);
+  color: var(--bg-cream);
+  animation: badgePulse 1.2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.vs-column {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 18px;
+}
+
+.vs-circle {
+  width: 92px;
+  height: 92px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--text-dark);
+  color: var(--bg-cream);
+  font-family: "Libre Baskerville", serif;
+  font-size: 28px;
+  font-weight: 700;
+  box-shadow: var(--shadow-card);
+  animation: vsFloat 2.4s ease-in-out infinite;
+}
+
+@keyframes vsFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+#game-winner-text {
+  margin: 0;
+  color: var(--text-light);
+  font-size: 15px;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 150px;
+  font-weight: 700;
+}
+
+.game-takeaway {
+  margin: 38px auto 0;
+  padding: 30px;
+  max-width: 900px;
+  border-radius: 28px;
+  background: rgba(255, 250, 245, 0.7);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+}
+
+.game-takeaway h3 {
+  margin: 0 0 14px;
+  font-family: "Libre Baskerville", serif;
+  font-size: clamp(26px, 3vw, 40px);
+  line-height: 1.1;
+  color: var(--text-dark);
+}
+
+.game-takeaway p:last-child {
+  margin: 0 auto;
+  max-width: 720px;
+  color: var(--text-light);
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+/* Responsive Visual 5 */
+
+@media (max-width: 1000px) {
+  .game-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .vs-column {
+    order: 2;
+  }
+
+  .vs-circle {
+    width: 76px;
+    height: 76px;
+    font-size: 22px;
+  }
+
+  #game-winner-text {
+    max-width: 420px;
+  }
+
+  .student-character-wrap {
+    height: 340px;
+  }
+
+  .game-student-img {
+    max-height: 330px;
+  }
+}
+
+@media (max-width: 600px) {
+  .student-game-card {
+    padding: 22px;
+  }
+
+  .student-character-wrap {
+    height: 300px;
+  }
+
+  .game-student-img {
+    max-height: 290px;
+  }
+
+  .choice-btn {
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+}
+
+.score-note {
+  margin: 8px 0 0;
+  color: var(--text-light);
+  font-size: 12px;
+  font-weight: 600;
+  text-align: right;
+}
